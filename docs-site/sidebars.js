@@ -7,5 +7,12 @@ module.exports = {
         'daily-tasks/task-6-provisioning-failures',
       ],
     },
+    {
+  type: 'category',
+  label: 'Emergency SOPs',
+  items: [
+    'emergency/workday-aggregation-failure',
+  ],
+},
   ],
 };

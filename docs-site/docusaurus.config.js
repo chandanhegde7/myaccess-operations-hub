@@ -1,72 +1,76 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {themes as prismThemes} from 'prism-react-renderer';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+
+  title: 'MyAccess Operations Hub',
+
+  tagline: 'Interactive IAM Operational Runbooks',
+
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+  url: 'https://chandanhegde7.github.io',
+
+  baseUrl: '/myaccess-operations-hub/',
+
+  organizationName: 'chandanhegde7',
+
+  projectName: 'myaccess-operations-hub',
+
+  trailingSlash: false,
+
+  onBrokenLinks: 'warn',
+
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
-
-  onBrokenLinks: 'throw',
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
 
+  markdown: {
+    mermaid: true,
+
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
+
+  themes: [
+    '@docusaurus/theme-mermaid',
+  ],
+
+  plugins: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['en'],
+        highlightSearchTermsOnTargetPage: true,
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+
+          routeBasePath: '/',
+
+          showLastUpdateAuthor: true,
+
+          showLastUpdateTime: true,
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+
+        blog: false,
+
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -75,82 +79,122 @@ const config = {
   ],
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/social-card.png',
+
       colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
         respectPrefersColorScheme: true,
       },
+
+      announcementBar: {
+        id: 'support_banner',
+
+        content:
+          '🚀 Interactive IAM Operational Runbooks for GXS MyAccess Support Team',
+
+        backgroundColor: '#0f172a',
+
+        textColor: '#ffffff',
+
+        isCloseable: true,
+      },
+
       navbar: {
-        title: 'My Site',
-        logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
-        },
+        title: 'MyAccess Ops Hub',
+
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            to: '/',
+            label: 'Dashboard',
             position: 'left',
-            label: 'Tutorial',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+
           {
-            href: 'https://github.com/facebook/docusaurus',
+            to: 'daily-tasks/task-6-provisioning-failures',
+            label: 'Daily Tasks',
+            position: 'left',
+          },
+
+          {
+            to: 'emergency/workday-aggregation-failure',
+            label: 'Emergency',
+            position: 'left',
+          },
+
+          {
+            type: 'search',
+            position: 'right',
+          },
+
+          {
+            href: 'https://github.com/chandanhegde7/myaccess-operations-hub',
             label: 'GitHub',
             position: 'right',
           },
         ],
       },
+
       footer: {
         style: 'dark',
+
         links: [
           {
-            title: 'Docs',
+            title: 'Operations',
+
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Daily Tasks',
+                to: 'daily-tasks/task-6-provisioning-failures',
+              },
+
+              {
+                label: 'Emergency SOPs',
+                to: 'emergency/workday-aggregation-failure',
               },
             ],
           },
+
           {
-            title: 'Community',
+            title: 'Platform',
+
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                label: 'GitHub Repository',
+                href: 'https://github.com/chandanhegde7/myaccess-operations-hub',
               },
             ],
           },
+
           {
-            title: 'More',
+            title: 'Support',
+
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: 'Operations Dashboard',
+                to: '/',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+
+        copyright:
+          `© ${new Date().getFullYear()} MyAccess Operations Hub`,
       },
+
       prism: {
         theme: prismThemes.github,
+
         darkTheme: prismThemes.dracula,
+
+        additionalLanguages: [
+          'bash',
+          'json',
+          'sql',
+          'powershell',
+          'yaml',
+        ],
       },
     }),
 };
